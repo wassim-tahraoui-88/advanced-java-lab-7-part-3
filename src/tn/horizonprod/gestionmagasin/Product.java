@@ -1,4 +1,4 @@
-package com.app.lab_1;
+package tn.horizonprod.gestionmagasin;
 
 import java.util.Date;
 
@@ -7,7 +7,6 @@ public class Product {
     private String label;
     private String brand;
     private double price;
-    private Date expirationDate;
 
     public Product() {}
 
@@ -21,8 +20,7 @@ public class Product {
         this.id = id;
         this.label = label;
         this.brand = brand;
-        if (price > 0) this.price = price;
-        else System.out.println("The price cannot be negative. It will be assigned a 0 as fallback.");
+        this.price = price;
     }
 
     public void display() {
@@ -31,9 +29,5 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public void setExpirationDate(Date expirationDate) {
-        this.expirationDate = expirationDate;
     }
 }
