@@ -1,4 +1,0 @@
-What JAVA commands do you need to use?
-- `javac <class name>.java` to compile the file,
-and `java <bytecode file name>` (without .class extension) to run the program.
-
