@@ -3,15 +3,21 @@ package tn.horizonprod.gestionmagasin;
 public class Store {
 
     private final int id;
+	private final String name;
     private final String address;
     private final int storeCapacity;
+    private final int employeeCapacity;
     private final Product[] products;
+	private final Employee[] employees;
 
-    public Store(int id, String address) {
+    public Store(int id, String name, String address) {
         this.id = id;
-        this.address = address;
+	    this.name = name;
+	    this.address = address;
         this.storeCapacity = 50;
+        this.employeeCapacity = 20;
         this.products = new Product[storeCapacity];
+		this.employees = new Employee[employeeCapacity];
     }
 	public void addProduct(Product product) {
 		for (int i = 0; i < products.length; i++) {
@@ -43,12 +49,19 @@ public class Store {
 		}
 	}
 
-    public void display() {
+    public void displayProducts() {
         System.out.println("This store of [" + id + "] is located at " + address + " and has the following products in stock:");
         for (Product product : products) {
             if (product != null) product.display();
         }
         System.out.println("------");
+    }
+    public void displayEmployee() {
+		System.out.println("This store of [" + id + "] is located at " + address + " and has the following employees:");
+		for (Employee employee : employees) {
+			if (employee != null) employee.display();
+		}
+		System.out.println("------");
     }
 
 	public boolean compare(Product p) {
@@ -73,5 +86,19 @@ public class Store {
 			if (product != null) otherCount++;
 		}
 		return localCount > otherCount ? this : otherStore;
+	}
+
+	public void addEmployee(Employee employee) {
+		for (int i = 0; i < employees.length; i++) {
+			if (employees[i].equals(employee)) {
+				System.out.println("You can't add this employee because they already work in this store");
+				return;
+			}
+			if (employees[i] == null) {
+				employees[i] = employee;
+				return;
+			}
+		}
+		System.out.println("The store has reached maximum capacity and cannot add a new employee.");
 	}
 }
