@@ -1,7 +1,5 @@
 package tn.horizonprod.gestionmagasin;
 
-import java.util.Date;
-
 public class Product {
     private int id;
     private String label;
@@ -27,7 +25,19 @@ public class Product {
         System.out.println("• Product ID [" + id + "] called " + label + " produced by " + brand + " costs " + price);
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+	public int getId() { return id; }
+	public String getLabel() { return label; }
+	public String getBrand() { return brand; }
+	public double getPrice() { return price; }
+
+	public void setPrice(double price) { this.price = price; }
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null || getClass() != obj.getClass()) return false;
+		Product product = (Product) obj;
+		return id == product.id && Double.compare(product.price, price) == 0 && label.equals(product.label);
+	}
+
 }
