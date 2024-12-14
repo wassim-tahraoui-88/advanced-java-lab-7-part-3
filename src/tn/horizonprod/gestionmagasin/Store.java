@@ -1,5 +1,8 @@
 package tn.horizonprod.gestionmagasin;
 
+import tn.horizonprod.gestionmagasin.exceptions.FullStoreException;
+import tn.horizonprod.gestionmagasin.exceptions.NegativePriceException;
+
 public class Store {
 
     private final int id;
@@ -12,10 +15,11 @@ public class Store {
         this.id = id;
 	    this.name = name;
 	    this.address = address;
-        this.products = new Product[ 50 ];
+        this.products = new Product[ 2 ]; // 2 products max
 		this.employees = new Employee[ 20 ];
     }
-	public void addProduct(Product product) {
+	public void addProduct(Product product) throws FullStoreException, NegativePriceException {
+		if (product.getPrice() < 0) throw new NegativePriceException(product.getLabel() + "'s price cannot be negative.");
 		for (int i = 0; i < products.length; i++) {
 			if (products[i] == null) {
 				products[i] = product;
@@ -26,7 +30,7 @@ public class Store {
 				return;
 			}
 		}
-		System.out.println("The store has reached maximum capacity and cannot add a new product");
+		throw new FullStoreException("The store has reached maximum capacity and cannot add a new product.");
 	}
 	public boolean findProduct(Product p) {
 		if (p == null) return false;
