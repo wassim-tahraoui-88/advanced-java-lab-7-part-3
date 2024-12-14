@@ -1,9 +1,9 @@
-package lab_5_part_2;
+package tn.horizonprod.gestionmagasin;
 
 public class FruitProduct extends AgriculturalProduct {
 
-	protected FruitProduct(int id, String type, String label, int quantity, int season) {
-		super(id, type, label, quantity, season);
+	protected FruitProduct(int id, String type, String label, double price, int quantity, int season) {
+		super(id, type, label, price, quantity, season);
 	}
 
 	@Override

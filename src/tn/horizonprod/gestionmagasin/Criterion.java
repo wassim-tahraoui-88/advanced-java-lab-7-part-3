@@ -1,4 +1,4 @@
-package lab_5_part_2;
+package tn.horizonprod.gestionmagasin;
 
 public interface Criterion {
 	boolean isFresh(int season);
