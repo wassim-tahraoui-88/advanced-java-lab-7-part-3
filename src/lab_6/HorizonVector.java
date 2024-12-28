@@ -36,9 +36,7 @@ public class HorizonVector implements University {
 
 	@Override
 	public void displayStudents() {
-		for (Student student : students) {
-			System.out.println(student);
-		}
+		for (Student student : students) System.out.println(student);
 	}
 
 	@Override

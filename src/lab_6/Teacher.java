@@ -1,16 +1,16 @@
 package lab_6;
 
-public class Student {
+public class Teacher {
 	private int id;
 	private String firstName;
 	private String lastName;
 
-	public Student() {
+	public Teacher() {
 		this.id = 0;
 		this.firstName = "";
 		this.lastName = "";
 	}
-	public Student(int id, String firstName, String lastName) {
+	public Teacher(int id, String firstName, String lastName) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -28,13 +28,13 @@ public class Student {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		var student = (Student) o;
-		return id == student.id;
+		var teacher = (Teacher) o;
+		return id == teacher.id;
 	}
 
 	@Override
 	public String toString() {
-		return "Student{" +
+		return "Teacher{" +
 				"id=" + id +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
