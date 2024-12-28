@@ -2,35 +2,44 @@ package lab_6;
 
 public class Main {
 	public static void main() {
-		var student1 = new Student(1, "John", "Doe");
-		var student2 = new Student(2, "Jane", "Doe");
-		var student3 = new Student(3, "Foo", "Bar");
-		var student4 = new Student(1, "Lorem", "Ipsum");
+		Company companyTreeMap = new CompanyTreeMap();
+		Company companyHashMap = new CompanyHashMap();
 
-		var teacher1 = new Teacher(1, "John", "Doe");
-		var teacher2 = new Teacher(2, "Jane", "Doe");
-		var teacher3 = new Teacher(3, "Foo", "Bar");
-		var teacher4 = new Teacher(1, "Lorem", "Ipsum");
+		Employee employee1 = new Employee(1, 1, "John", "Doe");
+		Employee employee2 = new Employee(2, 2, "Jane", "Doe");
+		Employee employee3 = new Employee(3, 3, "Alice", "Doe");
+		Employee employee4 = new Employee(4, 4, "Bob", "Doe");
 
-		System.out.println(student1.equals(student2)); // false
-		System.out.println(student1.equals(student4)); // true
+		Department department1 = new Department(1, "HR");
+		Department department2 = new Department(2, "IT");
+		Department department3 = new Department(3, "Finance");
 
-		System.out.println(teacher2.equals(teacher3)); // false
-		System.out.println(teacher1.equals(teacher4)); // true
+		companyTreeMap.addEmployeeToDepartment(employee1, department1);
+		companyTreeMap.addEmployeeToDepartment(employee2, department2);
+		companyTreeMap.addEmployeeToDepartment(employee3, department3);
+		companyTreeMap.addEmployeeToDepartment(employee4, department1);
 
-		var horizonArrayList = new HorizonArrayList();
-		horizonArrayList.addStudent(student1);
-		horizonArrayList.addStudent(student2);
-		horizonArrayList.displayStudents();
+		companyHashMap.addEmployeeToDepartment(employee1, department1);
+		companyHashMap.addEmployeeToDepartment(employee2, department2);
+		companyHashMap.addEmployeeToDepartment(employee3, department3);
+		companyHashMap.addEmployeeToDepartment(employee4, department1);
 
-		var horizonHashSet = new HorizonHashSet();
-		horizonHashSet.addTeacher(teacher1);
-		horizonHashSet.addTeacher(teacher2);
-		horizonHashSet.addTeacher(teacher3);
-		horizonHashSet.displayTeachers();
+		companyTreeMap.displayEmployeesWithDepartments();
+		companyHashMap.displayEmployeesWithDepartments();
 
-		horizonHashSet.deleteTeacher(teacher2);
+		companyTreeMap.displayEmployees();
+		companyHashMap.displayEmployees();
 
-		horizonHashSet.displayTeachers();
+		companyTreeMap.displayDepartments();
+		companyHashMap.displayDepartments();
+
+		companyTreeMap.displayDepartment(employee1);
+		companyHashMap.displayDepartment(employee1);
+
+		System.out.println(companyTreeMap.searchEmployee(employee1));
+		System.out.println(companyHashMap.searchEmployee(employee1));
+
+		System.out.println(companyTreeMap.searchDepartment(department1));
+		System.out.println(companyHashMap.searchDepartment(department1));
 	}
 }
